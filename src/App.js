@@ -1,17 +1,29 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import './reset.css';
 import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import CreatePage from './CreatePage.js';
+import DetailPage from './DetailPage.js';
+import ListPage from './ListPage.js';
 import Header from './Header.js';
-import Body from './Body.js';
-import Footer from './Footer.js';
+import Home from './Home.js';
 
 export default class App extends Component {
   render() {
       return (
-        <div className="App">
-          <Header />
-          <Body />
-          <Footer />
+        <div>
+          
+          <BrowserRouter>
+            <Header />
+            <Switch>
+
+              <Route path="/" exact component={Home} />
+              <Route path="/createpage" component={CreatePage} />
+              <Route path="/listpage" component={ListPage} />
+              <Route path="/detailpage" component={DetailPage} />
+              
+            </Switch>
+          </BrowserRouter>  
         </div>
       );
     }

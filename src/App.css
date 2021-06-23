@@ -47,8 +47,8 @@ header {
   box-shadow: var(--shadow);
 }
 
-header > p {
-  line-height: 5px;
+.nav-links {
+  margin: 5px;
 }
 
 footer {

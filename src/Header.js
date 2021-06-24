@@ -12,8 +12,6 @@ export default class Header extends Component {
                         <NavLink className="nav-links" to="/">Home</NavLink>      
                         <NavLink className="nav-links" to="/createpage">Create An Owl!</NavLink>      
                         <NavLink className="nav-links" to="/listpage">List of Owls</NavLink>      
-                        <NavLink className="nav-links" to="/detailpage">Owl Details</NavLink>     
-                        {/* <img src="big-logo.png" alt="logo"/> */}
                     </Route>
             </div>
         </header>

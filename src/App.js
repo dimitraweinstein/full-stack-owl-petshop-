@@ -20,7 +20,7 @@ export default class App extends Component {
               <Route path="/" exact component={Home} />
               <Route path="/createpage" component={CreatePage} />
               <Route path="/listpage" component={ListPage} />
-              <Route path="/detailpage" component={DetailPage} />
+              <Route path="/owls/:id" component={DetailPage} />
               
             </Switch>
           </BrowserRouter>  

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { createOwl } from './fetch-utils.js';
+import { createOwl, deleteOwl } from './fetch-utils.js';
 
 export default class CreatePage extends Component {
     
@@ -42,7 +42,21 @@ export default class CreatePage extends Component {
             endangered: this.state.endangered_id
         });
 
-        this.props.history.push('/')
+        this.props.history.push('/listpage')
+    }
+
+    handleDeleteOwl = async (e) => {
+        e.preventDefault();
+
+        await deleteOwl({
+            name: this.state.name,
+            note: this.state.note,
+            habitat: this.state.habitat,
+            price: this.state.price,
+            endangered: this.state.endangered_id
+        });
+
+        this.props.history.push('/listpage')
     }
 
     render() {
@@ -74,6 +88,7 @@ export default class CreatePage extends Component {
                         </select>
                     </label>
                     <button>Create!</button>
+                    <button onClick={this.handleDeleteOwl}>Delete!</button>
                 </form>
             </div>
         )

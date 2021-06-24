@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { getOneOwl, getAllEndangered, updateOwl } from './fetch-utils.js';
+import { getOneOwl, getAllEndangered, updateOwl, deleteOwl } from './fetch-utils.js';
 
 export default class DetailPage extends Component {
     state = {
@@ -57,12 +57,25 @@ export default class DetailPage extends Component {
             habitat: this.state.habitat,
             price: this.state.price,
             endangered: this.state.endangered,
-            endangered_id: this.state.endangered_id
+            endangered_id: this.state.endangered
         });
 
         this.props.history.push('/listpage')
     }
 
+    handleDeleteOwl = async (e) => {
+        e.preventDefault();
+
+        await deleteOwl({
+            name: this.state.name,
+            note: this.state.note,
+            habitat: this.state.habitat,
+            price: this.state.price,
+            endangered: this.state.endangered
+        });
+        this.setState();
+        this.props.history.push('/listpage')
+    }
 
     render() {
         return (
@@ -86,16 +99,20 @@ export default class DetailPage extends Component {
                     </label>
                     <label>
                         Endangered Status:
-                        <select selected={this.state.endangered} onChange={this.handleEndangeredChange}>
-                            {this.state.endangered.map(endangered =>
+                        <select onChange={this.handleEndangeredChange}>
+                            <option value="1">Critical</option>
+                            <option value="2">Moderate</option>
+                            <option value="3">None</option>
+                            {/* {this.state.endangered.map(endangered =>
                                 <option
                                     defaultValue={endangered.id === this.state.endangered_id}
-                                    value={endangered.id}>
+                                    key={endangered.id}>
                                     {endangered.endangered}
-                            </option>)}
+                            </option>)} */}
                         </select>
                     </label>
-                    <button>Update!</button>
+                    <button type="submit" value="submit">Update!</button>
+                    <button type="delete" value="delete" onClick={this.handleDeleteOwl}>Delete!</button>
                 </form>
             </div>
         )

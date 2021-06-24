@@ -20,11 +20,10 @@ export default class ListPage extends Component {
                 {
                     this.state.owls.map(owl => <Link to={`/owls/${owl.id}`}>
                         <div>
-                            <p>{owl.name}</p>
-                            <p>{owl.note}</p>
-                            <p>{owl.habitat}</p>
-                            <p>{owl.price}</p>
-                            <p>{ owl.endangered }</p>
+                            <li key={1}>{owl.name}</li>
+                            <li key={2}>{owl.note}</li>
+                            <li key={3}>{owl.price}</li>
+                            <li key={4}>{ owl.endangered }</li>
                         </div>
                     </Link>)
                     
